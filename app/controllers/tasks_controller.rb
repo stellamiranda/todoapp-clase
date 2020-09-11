@@ -11,6 +11,7 @@ class TasksController < ApplicationController
   #POST to save task in DB
   def create
     @task = Task.new(task_params)
+    
     if @task.save
       # TODO: Add flash message with success 
       redirect_to tasks_path
@@ -18,6 +19,12 @@ class TasksController < ApplicationController
       # TODO: Add flash message with errors 
       render :new 
     end
+  end
+
+  def destroy 
+    @task = Task.find(params[:id])
+    @task.destroy
+    redirect_to tasks_path
   end
 
   private 
