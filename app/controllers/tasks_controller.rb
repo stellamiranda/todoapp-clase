@@ -8,6 +8,14 @@ class TasksController < ApplicationController
     @task = Task.new
   end
 
+  def show
+    @task = Task.find(params[:id])
+  end
+
+  def edit
+    @task = Task.find(params[:id])
+  end
+
   #POST to save task in DB
   def create
     @task = Task.new(task_params)
@@ -18,6 +26,19 @@ class TasksController < ApplicationController
     else
       # TODO: Add flash message with errors 
       render :new 
+    end
+  end
+
+  #POST to save task in DB
+  def update
+    @task = Task.find(params[:id])
+
+    if @task.update(task_params)
+      # TODO: Add flash message with success
+      redirect_to tasks_path
+    else
+      # TODO: Add flash message with errors
+      render :new
     end
   end
 
