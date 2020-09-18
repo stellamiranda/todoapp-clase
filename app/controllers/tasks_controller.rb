@@ -1,4 +1,7 @@
 class TasksController < ApplicationController
+  before_action :set_task, only: [:show, :edit, :update, :destroy]
+  # before_action :set_task, except: [:index, :new]
+
   def index
     @tasks = Task.all 
   end
@@ -9,11 +12,9 @@ class TasksController < ApplicationController
   end
 
   def show
-    @task = Task.find(params[:id])
   end
 
   def edit
-    @task = Task.find(params[:id])
   end
 
   #POST to save task in DB
@@ -31,7 +32,6 @@ class TasksController < ApplicationController
 
   #POST to save task in DB
   def update
-    @task = Task.find(params[:id])
 
     if @task.update(task_params)
       # TODO: Add flash message with success
@@ -43,7 +43,6 @@ class TasksController < ApplicationController
   end
 
   def destroy 
-    @task = Task.find(params[:id])
     @task.destroy
     redirect_to tasks_path
   end
@@ -52,5 +51,9 @@ class TasksController < ApplicationController
 
   def task_params
     params.require(:task).permit(:title, :description)
+  end
+
+  def set_task
+    @task = Task.find(params[:id])
   end
 end
