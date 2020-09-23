@@ -4,6 +4,8 @@
   <% @tasks.each do |task| %>
   <li>
     <%= task.title %> - <%= task.description %> 
+    <%= link_to 'show', task_path(task) %>
+    <%= link_to 'edit', edit_task_path(task) %>
     <%= link_to 'destroy', task, method: 'delete', data: {confirm: "Are you sure?"} %>
   </li>
   <% end %>
