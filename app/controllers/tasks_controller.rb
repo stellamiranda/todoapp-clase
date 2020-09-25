@@ -4,7 +4,14 @@ class TasksController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @tasks = Task.all 
+    # show all tasks
+    # @tasks = Task.all
+
+    #show only tasks that belongs to the user logged in
+    @tasks = current_user.tasks
+
+    # Option 2 show only tasks that belongs to the user logged in
+    # @tasks = Task.where(user_id: current_user.id)
   end
 
   # GET with blank form 
@@ -20,7 +27,10 @@ class TasksController < ApplicationController
 
   #POST to save task in DB
   def create
-    @task = Task.new(task_params)
+    # @task = Task.new(task_params)
+    # @task.user_id = current_user.id
+
+    @task = current_user.tasks.new(task_params)
     
     if @task.save
       # TODO: Add flash message with success 
