@@ -1,15 +1,15 @@
 <div class="container">
   <div class="row">
-    <div class="col-6">
-    <%= link_to 'view all tasks', tasks_path, class: 'btn btn-outline-primary' %>
+        <div class="col-6 offset-md-3">
+    <%= link_to 'view all tasks', tasks_path, class: 'btn btn-outline-primary  mb-5' %>
 
-    <h1>Add new Task</h1>
+    <h1 class='mb-3'>Add new Task</h1>
 
-    <%= form_with(model: Task, local: true, class: 'form-group') do |form| %>
+    <%= form_with(model: Task, local: true, class: 'form-group mb-3') do |form| %>
       <%= form.label :title %>
-      <%= form.text_field :title, class: 'form-control' %>
+      <%= form.text_field :title, class: 'form-control mb-3' %>
       <%= form.label :description %>
-      <%= form.text_area :description, class: 'form-control', rows: 3 %>
+      <%= form.text_area :description, class: 'form-control mb-3', rows: 3 %>
       <%= form.submit "submit" , class: "btn btn-primary"%>
     <% end %>
     </div>
