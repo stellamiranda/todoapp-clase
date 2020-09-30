@@ -1,14 +1,28 @@
-<h1>TO-DOs</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
 
-<ul>
-  <% @tasks.each do |task| %>
-  <li>
-    <%= task.title %> - <%= task.description %> 
-    <%= link_to 'show', task_path(task) %>
-    <%= link_to 'edit', edit_task_path(task) %>
-    <%= link_to 'destroy', task, method: 'delete', data: {confirm: "Are you sure?"} %>
-  </li>
-  <% end %>
-</ul>
+    <%= link_to 'New task', new_task_path, class: 'btn btn-outline-primary mb-3 col-md-2' %>
 
-<%= link_to 'New task', new_task_path %>
+      <% @tasks.each do |task| %>
+      <div class="card mb-3">
+        <div class="card-header">
+          Priority: High
+        </div>
+        <div class="card-body">
+        <div class='float-left'>
+          <h5 class="card-title">Special title treatment</h5>
+          <p class="card-text"><%= task.description %> </p>
+          </div>
+          <div class='float-right'>
+          <%= link_to 'show', task_path(task), class: "btn btn-primary" %>
+          <%= link_to 'edit', edit_task_path(task), class: "btn btn-primary" %>
+          <%= link_to 'destroy', task, method: 'delete', data: {confirm: "Are you sure?"}, class: "btn btn-primary" %>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+

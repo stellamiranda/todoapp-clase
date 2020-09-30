@@ -1,5 +1,16 @@
-<h1>Tasks details</h1>
 
-<p><%= @task.title %></p>
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+    <%= link_to 'view all tasks', tasks_path, class: 'btn btn-outline-primary  mb-5' %>
 
-<p><%= @task.description %></p>
+    <h1 class='mb-3'>Tasks details</h1>
+
+<label><strong>Title</strong></label>
+<p class='mb-3 lead'><%= @task.title %></p>
+
+<label><strong>Description</strong></label>
+<p class='mb-3 lead'><%= @task.description %></p>
+    </div>
+  </div>
+</div>
